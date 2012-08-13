@@ -1,8 +1,10 @@
 Iftogram::Application.routes.draw do
+  get "oauth/auth"
+
   #match 'profile/:id' => 'profile#view'
   match 'profile/:id' => 'profile#view', :as => :profile
   get "search/index"
-  get "search/result", :action => :index
+  get "search/result", :controller => :search, :action => :index
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

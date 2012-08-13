@@ -7,13 +7,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<div class="container-fluid">
-		<h1>Iftogram</h1>
-		<hr></hr>
-			<p>Instagram from the outside</p>
-		<hr></hr>
-		<%= yield %>
-	</div>
+		<div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">Iftogram</a>
+          <% if session[:user] %>
+            <p class="navbar-text pull-right">Logged in as <%= session[:user].name %></p>
+          <% else %>
+            <a class="navbar-text pull-right" href="https://api.instagram.com/oauth/authorize/?client_id=5941c4645df04708ae67e1ad4b3d6684&redirect_uri=http%3A%2F%2Fec2-01.dev.causes.com%3A3000%2Foauth%2Fauth&response_type=code">Log in with your Instagram account</a>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <h1>Iftogram</h1>
+	  	<hr></hr>
+  			<p>Instagram from the outside</p>
+  		<hr></hr>
+  		<%= yield %>
+	  </div>
 
 
 
