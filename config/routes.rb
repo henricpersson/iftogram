@@ -1,8 +1,8 @@
 Iftogram::Application.routes.draw do
-  match 'profile/:id' => 'profile#view'
-
+  #match 'profile/:id' => 'profile#view'
+  match 'profile/:id' => 'profile#view', :as => :profile
   get "search/index"
-  get "search/result"
+  get "search/result", :action => :index
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

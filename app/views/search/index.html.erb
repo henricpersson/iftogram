@@ -10,7 +10,7 @@
 	
 	<% if @results
 		@results["data"].each do |person| -%>
-		  <a href="<%= profile_view_path(person["id"]) %>">
+		  <a href="<%= profile_path(person["id"]) %>">
 			  <div class="row-fluid item">
 				<div class="span3">
 					<img src="<%= person["profile_picture"] %>">
@@ -21,7 +21,6 @@
 					<p><%= person["bio"] %></p>
 				</div>
 			  </div>
-			  
 		  </a>
 		  <hr></hr>
 	<%   end 
