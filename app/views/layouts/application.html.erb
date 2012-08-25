@@ -12,18 +12,18 @@
         <div class="container">
           <a class="brand" href="/">Iftogram</a>
           <% if session[:user] %>
-            <p class="navbar-text pull-right">Logged in as <%= session[:user].name %></p>
+<!--            <img src="<%= session[:user].profile_picture %>"/> -->
+            <p class="navbar-text pull-right">
+              Logged in as <%= session[:user].username %>
+              | <%= link_to 'Sign out', oauth_logout_path %> 
+            </p>
           <% else %>
-            <a class="navbar-text pull-right" href="https://api.instagram.com/oauth/authorize/?client_id=5941c4645df04708ae67e1ad4b3d6684&redirect_uri=http%3A%2F%2Fec2-01.dev.causes.com%3A3000%2Foauth%2Fauth&response_type=code">Log in with your Instagram account</a>
+            <%= link_to 'Log in with your Instagram account', oauth_connect_path, class: 'navbar-text pull-right' %>
           <% end %>
         </div>
       </div>
     </div>
     <div class="container">
-      <h1>Iftogram</h1>
-	  	<hr></hr>
-  			<p>Instagram from the outside</p>
-  		<hr></hr>
   		<%= yield %>
 	  </div>
 

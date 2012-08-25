@@ -1,6 +1,4 @@
-require 'open-uri'
-require 'json'
-require 'cgi'
+require 'instagram'
 class SearchController < ApplicationController
 
   CLIENT_ID = '5941c4645df04708ae67e1ad4b3d6684'
@@ -11,10 +9,7 @@ class SearchController < ApplicationController
       @people = []
     else
       @query = params[:q]
-      json = open("#{INSTAGRAM_API_URL}?q=#{CGI.escape(@query)}&client_id=#{CLIENT_ID}").read
-      if results = JSON.parse(json)
-        @people = results['data']
-      end
+      @people = Instagram.user_search(@query)
     end
   end
 end

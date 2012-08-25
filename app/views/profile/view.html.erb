@@ -1,1 +1,23 @@
-test ID: <%= @id %>
+<div class="profile-media">
+  <% if @result[:success] -%>
+    <% @result[:media].each do |item| -%>
+     <div class="profile-media-item">
+       <!-- item -->
+       <% img = item.images.standard_resolution %>
+       <%= image_tag(img.url, :size => "612x612", :alt => item.caption.text) %>
+       <p>
+         <%= item.caption.text %>
+       </p>
+     </div>  
+     
+    <% end -%>
+ <% else -%>
+    <div class="alert alert-info">
+      You need to 
+        <%= link_to 'login', oauth_connect_path(:return_to_url => request.url) %> 
+      to view this profile's feed. 
+    </div>
+ <% end -%>
+</div>
+
+
